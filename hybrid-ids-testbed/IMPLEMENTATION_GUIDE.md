@@ -44,7 +44,7 @@ The script assigns Monday to benign-only training, Tuesday/Wednesday to validati
 
 ## 4. Review outputs
 
-The script writes `run_output/experiment_results.json` and `run_output/test_predictions.csv`. Compare the result JSON against the committed `hybrid-ids-testbed/outputs/experiment_results.json`, including input hashes, partition counts, threshold selection, confusion counts, per-family recall, runtime, and the recorded schema limitations. The committed output bundle also contains a compressed copy of test predictions.
+The script writes `run_output/experiment_results.json` and `run_output/test_predictions.csv`. Compare the result JSON against the committed `hybrid-ids-testbed/outputs/experiment_results.json`, including input hashes, partition counts, threshold selection, confusion counts, per-family recall, runtime, and the recorded schema limitations. The public GitHub repository contains the summary metrics and run manifest, but does not commit the raw dataset or per-flow prediction export. The run generates the uncompressed prediction CSV locally.
 
 ## 5. Interpret results carefully
 
