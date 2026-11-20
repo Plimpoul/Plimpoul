@@ -1,0 +1,413 @@
+{
+  "source": "CIC-IDS2017 MachineLearningCSV mirror (c01dsnap/CIC-IDS2017, main) with dataset provenance and checksum cross-check against CIC distribution; official dataset citation retained.",
+  "dataset_citation": "Sharafaldin, I., Lashkari, A. H., & Ghorbani, A. A. (2018). Toward Generating a New Intrusion Detection Dataset and Intrusion Traffic Characterization. ICISSP 2018.",
+  "data_files": [
+    {
+      "file": "Monday-WorkingHours.pcap_ISCX.csv",
+      "partition": "train",
+      "sha256": "852c4beb34eda186f32561fa79df7a0747e92e1a6535b01270820dd9ffe17f34",
+      "raw_rows": 529918,
+      "mapped_rows": 529918,
+      "labels_raw": {
+        "BENIGN": 529918
+      },
+      "missing_feature_cells": 874,
+      "cross_partition_exact_feature_duplicates_removed": 0
+    },
+    {
+      "file": "Tuesday-WorkingHours.pcap_ISCX.csv",
+      "partition": "validation",
+      "sha256": "52b8692ae8c7d2ed04671fe2b98335693c0a92c7ab157d8c8b534d6523080851",
+      "raw_rows": 445909,
+      "mapped_rows": 421791,
+      "labels_raw": {
+        "BENIGN": 432074,
+        "FTP-Patator": 7938,
+        "SSH-Patator": 5897
+      },
+      "missing_feature_cells": 528,
+      "cross_partition_exact_feature_duplicates_removed": 24118
+    },
+    {
+      "file": "Wednesday-workingHours.pcap_ISCX.csv",
+      "partition": "validation",
+      "sha256": "893c27dc968bf7a8adef1689f90be55ca4a4dc3088fb63d6ff247ac56856df2a",
+      "raw_rows": 692703,
+      "mapped_rows": 602490,
+      "labels_raw": {
+        "BENIGN": 440031,
+        "DoS Hulk": 231073,
+        "DoS slowloris": 5796,
+        "DoS Slowhttptest": 5499,
+        "DoS GoldenEye": 10293,
+        "Heartbleed": 11
+      },
+      "missing_feature_cells": 2594,
+      "cross_partition_exact_feature_duplicates_removed": 90213
+    },
+    {
+      "file": "Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv",
+      "partition": "test",
+      "sha256": "d67066211fb1689c78406f1506f4c44704ecb92088353d5c96d96d6474eb819d",
+      "raw_rows": 170366,
+      "mapped_rows": 156252,
+      "labels_raw": {
+        "BENIGN": 168186,
+        "Web Attack - Brute Force": 1507,
+        "Web Attack - XSS": 652,
+        "Web Attack - Sql Injection": 21
+      },
+      "missing_feature_cells": 270,
+      "cross_partition_exact_feature_duplicates_removed": 14114
+    },
+    {
+      "file": "Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv",
+      "partition": "test",
+      "sha256": "6bcda3857c2504676034e3ea57762d38393cc734cb377a726bd5cb153961b1b5",
+      "raw_rows": 288602,
+      "mapped_rows": 242424,
+      "labels_raw": {
+        "BENIGN": 288566,
+        "Infiltration": 36
+      },
+      "missing_feature_cells": 414,
+      "cross_partition_exact_feature_duplicates_removed": 46178
+    },
+    {
+      "file": "Friday-WorkingHours-Morning.pcap_ISCX.csv",
+      "partition": "test",
+      "sha256": "53a41c24d570ea83b7ac55b2e94df94e7a8216aeb80a2af0246b6bc8bb543000",
+      "raw_rows": 191033,
+      "mapped_rows": 173036,
+      "labels_raw": {
+        "BENIGN": 189067,
+        "Bot": 1966
+      },
+      "missing_feature_cells": 244,
+      "cross_partition_exact_feature_duplicates_removed": 17997
+    },
+    {
+      "file": "Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv",
+      "partition": "test",
+      "sha256": "ca1824c51bfbb7b3c72290a11be04366ba8815878c6a1cc5c44cb1cee269e99b",
+      "raw_rows": 286467,
+      "mapped_rows": 204927,
+      "labels_raw": {
+        "BENIGN": 127537,
+        "PortScan": 158930
+      },
+      "missing_feature_cells": 742,
+      "cross_partition_exact_feature_duplicates_removed": 81540
+    },
+    {
+      "file": "Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv",
+      "partition": "test",
+      "sha256": "6ff1580f5f81c0ae28a26f7631721018577f5f7c5e0feac28b795fcfe7b411ee",
+      "raw_rows": 225745,
+      "mapped_rows": 217761,
+      "labels_raw": {
+        "DDoS": 128027,
+        "BENIGN": 97718
+      },
+      "missing_feature_cells": 68,
+      "cross_partition_exact_feature_duplicates_removed": 7984
+    }
+  ],
+  "split": {
+    "train": "Monday",
+    "validation": "Tuesday + Wednesday",
+    "test": "Thursday + Friday"
+  },
+  "rows": {
+    "train": 529918,
+    "validation": 1024281,
+    "test": 994400,
+    "train_benign": 529918,
+    "validation_benign": 821408,
+    "validation_attack": 202873,
+    "test_benign": 772000,
+    "test_attack": 222400
+  },
+  "feature_count": 78,
+  "features": [
+    "Destination Port",
+    "Flow Duration",
+    "Total Fwd Packets",
+    "Total Backward Packets",
+    "Total Length of Fwd Packets",
+    "Total Length of Bwd Packets",
+    "Fwd Packet Length Max",
+    "Fwd Packet Length Min",
+    "Fwd Packet Length Mean",
+    "Fwd Packet Length Std",
+    "Bwd Packet Length Max",
+    "Bwd Packet Length Min",
+    "Bwd Packet Length Mean",
+    "Bwd Packet Length Std",
+    "Flow Bytes/s",
+    "Flow Packets/s",
+    "Flow IAT Mean",
+    "Flow IAT Std",
+    "Flow IAT Max",
+    "Flow IAT Min",
+    "Fwd IAT Total",
+    "Fwd IAT Mean",
+    "Fwd IAT Std",
+    "Fwd IAT Max",
+    "Fwd IAT Min",
+    "Bwd IAT Total",
+    "Bwd IAT Mean",
+    "Bwd IAT Std",
+    "Bwd IAT Max",
+    "Bwd IAT Min",
+    "Fwd PSH Flags",
+    "Bwd PSH Flags",
+    "Fwd URG Flags",
+    "Bwd URG Flags",
+    "Fwd Header Length",
+    "Bwd Header Length",
+    "Fwd Packets/s",
+    "Bwd Packets/s",
+    "Min Packet Length",
+    "Max Packet Length",
+    "Packet Length Mean",
+    "Packet Length Std",
+    "Packet Length Variance",
+    "FIN Flag Count",
+    "SYN Flag Count",
+    "RST Flag Count",
+    "PSH Flag Count",
+    "ACK Flag Count",
+    "URG Flag Count",
+    "CWE Flag Count",
+    "ECE Flag Count",
+    "Down/Up Ratio",
+    "Average Packet Size",
+    "Avg Fwd Segment Size",
+    "Avg Bwd Segment Size",
+    "Fwd Header Length.1",
+    "Fwd Avg Bytes/Bulk",
+    "Fwd Avg Packets/Bulk",
+    "Fwd Avg Bulk Rate",
+    "Bwd Avg Bytes/Bulk",
+    "Bwd Avg Packets/Bulk",
+    "Bwd Avg Bulk Rate",
+    "Subflow Fwd Packets",
+    "Subflow Fwd Bytes",
+    "Subflow Bwd Packets",
+    "Subflow Bwd Bytes",
+    "Init_Win_bytes_forward",
+    "Init_Win_bytes_backward",
+    "act_data_pkt_fwd",
+    "min_seg_size_forward",
+    "Active Mean",
+    "Active Std",
+    "Active Max",
+    "Active Min",
+    "Idle Mean",
+    "Idle Std",
+    "Idle Max",
+    "Idle Min"
+  ],
+  "preprocessing": {
+    "headers": "strip leading/trailing whitespace",
+    "labels": "BENIGN => benign (0); all nonempty attack labels => attack (1)",
+    "missing_infinite": "median imputation from training benign rows; remaining all-missing columns set to zero",
+    "exact_duplicate_rule": "feature hashes in later partitions removed where identical to an earlier partition; no near-duplicate removal",
+    "training": "all Monday benign rows; IsolationForest default max_samples=min(256,n_samples), 100 trees, seed 42"
+  },
+  "rule_schema": {
+    "high_packet_rate": true,
+    "multi_port_scan": false,
+    "repeated_connection": false,
+    "reason": "MachineLearningCSV contains numeric flow features but no timestamp/source-IP fields."
+  },
+  "thresholds": {
+    "validation_fpr_budget": 0.01,
+    "anomaly_score_threshold": 0.15822653031973366,
+    "anomaly_validation_selection": {
+      "validation_FPR": 0.009999902606256574,
+      "validation_recall": 0.3828700714239943,
+      "target_FPR": 0.01,
+      "status": "budget_met"
+    },
+    "packet_rate_training_benign_quantile_candidates": {
+      "0.99": 1000000.0,
+      "0.995": 2000000.0,
+      "0.999": 2000000.0,
+      "0.9995": 2000000.0,
+      "0.9999": 3000000.0
+    },
+    "selected_packet_rate_quantile": "0.995",
+    "selected_packet_rate_cut": 2000000.0,
+    "validation_rule_metrics": {
+      "N": 1024281,
+      "TP": 18,
+      "FP": 5761,
+      "TN": 815647,
+      "FN": 202855,
+      "precision": 0.0031147257310953453,
+      "recall": 8.87254587845598e-05,
+      "F1": 0.0001725360887985737,
+      "FPR": 0.007013566948459231,
+      "balanced_accuracy": 0.4965375792551627
+    },
+    "equal_budget_hybrid_selected_rate_quantile": "0.9999",
+    "equal_budget_hybrid_rate_cut": 3000000.0,
+    "equal_budget_hybrid_anomaly_cutoff": 0.18000140350121271,
+    "equal_budget_hybrid_validation_metrics": {
+      "N": 1024281,
+      "TP": 17315,
+      "FP": 6262,
+      "TN": 815146,
+      "FN": 185558,
+      "precision": 0.734402171607923,
+      "recall": 0.08534896215859183,
+      "F1": 0.15292559063810995,
+      "FPR": 0.007623495266664069,
+      "balanced_accuracy": 0.5388627334459639
+    }
+  },
+  "metrics": {
+    "rule_only": {
+      "N": 994400,
+      "TP": 414,
+      "FP": 5903,
+      "TN": 766097,
+      "FN": 221986,
+      "precision": 0.06553743865759062,
+      "recall": 0.0018615107913669065,
+      "F1": 0.003620194388698697,
+      "FPR": 0.007646373056994818,
+      "balanced_accuracy": 0.49710756886718604,
+      "test_inference_seconds": 0.0001750369999626855,
+      "flows_per_second": 5681084571.901865
+    },
+    "anomaly_only": {
+      "N": 994400,
+      "TP": 7415,
+      "FP": 12998,
+      "TN": 759002,
+      "FN": 214985,
+      "precision": 0.36324891000832804,
+      "recall": 0.03334082733812949,
+      "F1": 0.06107580730850489,
+      "FPR": 0.01683678756476684,
+      "balanced_accuracy": 0.5082520198866813,
+      "test_inference_seconds": 5.241797236000139,
+      "flows_per_second": 189705.9262747823
+    },
+    "hybrid_or": {
+      "N": 994400,
+      "TP": 7829,
+      "FP": 18901,
+      "TN": 753099,
+      "FN": 214571,
+      "precision": 0.2928918817807707,
+      "recall": 0.035202338129496406,
+      "F1": 0.06285072050736563,
+      "FPR": 0.024483160621761656,
+      "balanced_accuracy": 0.5053595887538673,
+      "test_inference_seconds": 5.241972273000101,
+      "flows_per_second": 189699.5917208242
+    },
+    "benign_baseline": {
+      "N": 994400,
+      "TP": 0,
+      "FP": 0,
+      "TN": 772000,
+      "FN": 222400,
+      "precision": null,
+      "recall": 0.0,
+      "F1": 0.0,
+      "FPR": 0.0,
+      "balanced_accuracy": 0.5
+    },
+    "hybrid_equal_validation_fpr_budget": {
+      "N": 994400,
+      "TP": 25,
+      "FP": 11188,
+      "TN": 760812,
+      "FN": 222375,
+      "precision": 0.002229554980825827,
+      "recall": 0.00011241007194244605,
+      "F1": 0.00021402918501966928,
+      "FPR": 0.014492227979274611,
+      "balanced_accuracy": 0.4928100910463339
+    }
+  },
+  "alert_overlap": {
+    "attacks_rule_only": 414,
+    "attacks_anomaly_only": 7415,
+    "attacks_both": 0,
+    "benign_rule_only": 5903,
+    "benign_anomaly_only": 12998,
+    "benign_both": 0
+  },
+  "test_attack_family_metrics": {
+    "Bot": {
+      "support": 1953,
+      "rule_recall": 0.0015360983102918587,
+      "anomaly_recall": 0.0,
+      "hybrid_recall": 0.0015360983102918587
+    },
+    "DDoS": {
+      "support": 128013,
+      "rule_recall": 1.5623413247092093e-05,
+      "anomaly_recall": 0.05783787584073492,
+      "hybrid_recall": 0.05785349925398202
+    },
+    "Infiltration": {
+      "support": 36,
+      "rule_recall": 0.0,
+      "anomaly_recall": 0.2777777777777778,
+      "hybrid_recall": 0.2777777777777778
+    },
+    "PortScan": {
+      "support": 90255,
+      "rule_recall": 0.00453160489723561,
+      "anomaly_recall": 0.0,
+      "hybrid_recall": 0.00453160489723561
+    },
+    "Web Attack - Brute Force": {
+      "support": 1470,
+      "rule_recall": 0.0,
+      "anomaly_recall": 0.0,
+      "hybrid_recall": 0.0
+    },
+    "Web Attack - Sql Injection": {
+      "support": 21,
+      "rule_recall": 0.0,
+      "anomaly_recall": 0.0,
+      "hybrid_recall": 0.0
+    },
+    "Web Attack - XSS": {
+      "support": 652,
+      "rule_recall": 0.0,
+      "anomaly_recall": 0.0015337423312883436,
+      "hybrid_recall": 0.0015337423312883436
+    }
+  },
+  "runtime": {
+    "model_fit_seconds": 0.27881227800003217,
+    "anomaly_test_inference_seconds": 5.241797236000139,
+    "rule_test_inference_seconds": 0.0001750369999626855,
+    "hybrid_test_inference_seconds": 5.241972273000101,
+    "peak_rss_bytes": 2216345600
+  },
+  "software": {
+    "python": "3.12.14",
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "scikit_learn": "1.8.0",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  },
+  "limitations": [
+    "One dataset release and historical lab capture only.",
+    "Capture-day split confounds attack family and day.",
+    "MachineLearningCSV does not preserve timestamps or source/destination IPs, so multi-port and repeated-connection rules could not be executed; only high packet-rate rule ran.",
+    "Test results are benchmark evidence, not current enterprise effectiveness."
+  ],
+  "data_source_access_date": "2026-11-19",
+  "dataset_scope_note": "Full eight-file machine-learning CSV release mirrored from CIC-IDS2017; not live contemporary enterprise traffic."
+}
