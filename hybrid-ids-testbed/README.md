@@ -1,35 +1,35 @@
 # Hybrid Flow IDS Reproduction Artifacts
 
-This bundle contains the runnable Python implementation and output from one full CIC-IDS2017 MachineLearningCSV benchmark run. The reported experiment is a historical laboratory benchmark, not a live enterprise deployment.
+This project contains the runnable implementation and summary output for one full CIC-IDS2017 MachineLearningCSV benchmark run. It is a historical offline laboratory evaluation, not a live enterprise deployment.
 
-## Included files
+## Repository files
 
-- `src/hybrid_ids.py` - full experiment implementation used for the run.
-- `outputs/experiment_results.json` - input file hashes, split audit, thresholds, test metrics, per-family results, runtime, and limitations.
-- `outputs/test_predictions.csv.gz` - frozen per-flow held-out predictions and labels.
-- `requirements.txt` - Python dependencies.
+- `src/hybrid_ids.py` — experiment implementation.
+- `outputs/experiment_results.json` — file hashes, split audit, thresholds, test metrics, per-family results, runtime, and limitations.
+- `outputs/run_manifest.json` — run-level audit and input hashes.
+- `requirements.txt` — Python dependencies.
 
-The original dataset is not included. Download the labeled flow CSV release from the official Canadian Institute for Cybersecurity page or an authenticated mirror. The files used for this run came from the public `c01dsnap/CIC-IDS2017` dataset mirror on Hugging Face. All eight file SHA-256 values are recorded in `experiment_results.json`; the Monday file hash matches the published mirror metadata. Cite the original CIC-IDS2017 dataset paper when reusing the benchmark.
+The raw CIC-IDS2017 CSV files and per-flow prediction export are not committed. The script generates `run_output/test_predictions.csv` when reproduced. The original dataset must be downloaded separately; see the cited dataset source in the report and implementation guide.
 
-## Reproduction
+## Reproduce
 
 Use Python 3.10 or later. From the repository root:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
+python -m pip install -r hybrid-ids-testbed/requirements.txt
 mkdir -p data/cicids2017
 ```
 
-Place all eight `*.pcap_ISCX.csv` files in `data/cicids2017/` using their standard filenames. The script assigns Monday to training, Tuesday and Wednesday to validation, and Thursday and Friday to test. It drops exact duplicate feature rows found in later partitions, keeps near duplicates, uses all Monday benign records, and fits the Isolation Forest with 100 trees and seed 42. It selects thresholds on validation at a 1% benign false-positive objective where feasible. Results are written to `run_output/`.
+Place the eight standard `*.pcap_ISCX.csv` files in `data/cicids2017/`. The script assigns Monday to training, Tuesday/Wednesday to validation, and Thursday/Friday to testing. It removes exact duplicate feature rows found in later partitions and fits Isolation Forest using Monday benign flows only.
 
 ```bash
-python src/hybrid_ids.py
+python hybrid-ids-testbed/src/hybrid_ids.py
 ```
 
-The supplied MachineLearningCSV variant lacks timestamps and source IPs, so the scan and repeated-connection predicates are disabled. The packet-rate rule runs on `Flow Packets/s`. The audit output records this constraint. Do not claim that the grouped rules ran for these files.
+Results are written to `run_output/`. The supplied MachineLearningCSV variant lacks timestamps and source IPs, so scan and repeated-connection predicates are disabled; only the packet-rate rule is evaluated.
 
-## Dataset facts and limitations
+## Dataset limitations
 
-The CIC-IDS2017 source describes a five-day capture (July 3-7, 2017) with Monday normal traffic and attacks on Tuesday through Friday. The day split therefore has attack-family/day confounding. The test set includes families not represented in the training data. The result is limited to this benchmark, CSV schema, split, features, and operating thresholds.
+CIC-IDS2017 is a 2017 laboratory dataset with day-specific attack-family composition. The results are bounded by the CSV schema, feature-only duplicate-removal policy, split, and selected thresholds. Do not interpret them as current enterprise effectiveness.
